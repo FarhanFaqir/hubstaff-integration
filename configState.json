@@ -1,0 +1,67 @@
+{
+  "api_base_url": "https://api.hubstaff.com/",
+  "issuer_url": "https://account.hubstaff.com",
+  "issuer": {
+    "claim_types_supported": [
+      "normal"
+    ],
+    "claims_parameter_supported": false,
+    "grant_types_supported": [
+      "authorization_code",
+      "refresh_token"
+    ],
+    "request_parameter_supported": false,
+    "request_uri_parameter_supported": true,
+    "require_request_uri_registration": false,
+    "response_modes_supported": [
+      "query",
+      "fragment"
+    ],
+    "token_endpoint_auth_methods_supported": [
+      "client_secret_basic",
+      "client_secret_post"
+    ],
+    "issuer": "https://account.hubstaff.com",
+    "authorization_endpoint": "https://account.hubstaff.com/authorizations/new",
+    "jwks_uri": "https://account.hubstaff.com/jwks.json",
+    "response_types_supported": [
+      "code"
+    ],
+    "subject_types_supported": [
+      "public",
+      "pairwise"
+    ],
+    "id_token_signing_alg_values_supported": [
+      "RS256"
+    ],
+    "token_endpoint": "https://account.hubstaff.com/access_tokens",
+    "userinfo_endpoint": "https://account.hubstaff.com/user_info",
+    "scopes_supported": [
+      "openid",
+      "profile",
+      "email",
+      "tasks:read",
+      "tasks:write",
+      "hubstaff:read",
+      "hubstaff:write"
+    ],
+    "request_object_signing_alg_values_supported": [
+      "HS256",
+      "HS384",
+      "HS512"
+    ],
+    "claims_supported": [
+      "sub",
+      "iss",
+      "name",
+      "email"
+    ]
+  },
+  "issuer_expires_at": 1697725090.083,
+  "token": {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImRlZmF1bHQifQ.eyJqdGkiOiJVRUhldTk5SSIsImlzcyI6Imh0dHBzOi8vYWNjb3VudC5odWJzdGFmZi5jb20iLCJleHAiOjE2OTc2Mjc3MjksImlhdCI6MTY5NzU0MTMyOSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCBodWJzdGFmZjpyZWFkIGh1YnN0YWZmOndyaXRlIn0.XFOwBhMafluIsVMKVoXHesKvpreMqf0-YxGZMX2FHMjA_3dabx5Fp1T4bYLnWhull-M1tSOKoeOnta7dxzhdxXi7JpGdhKNRqRa2OYh1ZdR2rrgqehKTsNFzXmTC7tHMbLLEIQ0aPZGE2Ny8E1Ge7ZUvuHe-Hfobz6aQdoIzARw_A-kYgoav3Zaw5alx-QUXRjvogDqYbEcQIRNOHDspv4xBfcWAH0KbhgTR440QySqLBPyhmoLqUTole-FSCV-4XhzwQf1z2HiJYKnly0iTzjQAgRVUw1Er56Z8rm_Xxe7ivRl2Dmw35dCYPXHKnnf23yNf7UkyLqXEFn4ibPSx3Q",
+    "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImRlZmF1bHQifQ.eyJqdGkiOiJVRktYNWROSiIsImlzcyI6Imh0dHBzOi8vYWNjb3VudC5odWJzdGFmZi5jb20iLCJleHAiOjE3MDUzMTczMjksImlhdCI6MTY5NjkzMTA5OCwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCBodWJzdGFmZjpyZWFkIGh1YnN0YWZmOndyaXRlIn0.tpDGcEFBi8u9AHgOJ5p_Fg37JAhhs-Y0u_GoXuE0OVON_CJ5FaFGQSPOpZ5EU1Rm9BuPLr2v35rqytTFrKWJGW-fPRqC3y6I-midKjNXPLqnSk6ygJrVjuWaDsjim4IBHyjspdC0bNJhOmZCl-lTYjJCkW0OmdRsutTHe3Dj1iM0xB3Ee6oz0mmXazZV0qmjS-iYmyxk1aaZkvVS-Dl3vTQV5UqsQPDSy2NHGStqJZx_U73U9hCeNH4xcvi7UETwUxSKIwGEKb20aTFuYtuneqiR4LY9oJKdZUudRLahzaLDi5n-VQHEtnIIuG_Y6hfQQMsdVkKiqI3fkJ5Y_c6gTA",
+    "token_type": "bearer",
+    "expires_at": 1697627729
+  }
+}
