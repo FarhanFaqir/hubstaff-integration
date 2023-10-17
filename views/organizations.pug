@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    each org in organizations
+        h3= org.name
+        dl
+            dt ID
+            dd= org.id
+            dt Status
+            dd= org.status
