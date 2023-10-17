@@ -20,11 +20,11 @@ let state = {
 let client;
 
 function loadState() {
-    return fs.readFileSync('./configState.json', 'utf8');
+    return fs.readFileSync('../configState.json', 'utf8');
 }
 
 function saveState() {
-    fs.writeFileSync('./configState.json', JSON.stringify(state, null, 2), 'utf8');
+    fs.writeFileSync('../configState.json', JSON.stringify(state, null, 2), 'utf8');
     debug('State saved');
 }
 
