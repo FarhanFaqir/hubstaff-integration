@@ -9,16 +9,34 @@ router.get('/', async function (req, res, next) {
         json: true,
     });
     const body = JSON.parse(response.body);
-    res.send(body.organizations)
-    // res.render('organizations', {
-    //     title: 'Organization list',
-    //     organizations: body.organizations || []
-    // });
+    // res.send(body.organizations)
+    res.render('organizations', {
+        title: 'Organization list',
+        organizations: body.organizations || []
+    });
 });
 
 
 router.get('/activities', async function (req, res, next) {
-    const response = await api.request('v2/organizations/105297/activities?time_slot[start]=2023-06-25T08:09:26.597143Z&time_slot[stop]=2023-06-30T08:09:26.597143Z', {
+    const response = await api.request(`v2/organizations/105297/activities?time_slot[start]=${$req.query.startTime}&time_slot[stop]=${req.query.endTime}`, {
+        method: 'GET',
+        json: true
+      });
+    const body = JSON.parse(response.body);
+    res.send(body)
+});
+
+router.get('/timesheets', async function (req, res, next) {
+    const response = await api.request('v2/organizations/105298/timesheets?date[start]=2023-10-17T08:00:00Z&date[stop]=2023-10-18T16:00:00Z&status=open', {
+        method: 'GET',
+        json: true
+      });
+    const body = JSON.parse(response.body);
+    res.send(body)
+});
+
+router.get('/tasks', async function (req, res, next) {
+    const response = await api.request(`v2/organizations/${req.query.task}/tasks`, {
         method: 'GET',
         json: true
       });
@@ -27,8 +45,7 @@ router.get('/activities', async function (req, res, next) {
 });
 
 router.get('/users', async function (req, res, next) {
-
-    const response = await api.request('v2/users/329418', {
+    const response = await api.request(`v2/users/${req.query.userId}`, {
         method: 'GET',
         json: true
     });
