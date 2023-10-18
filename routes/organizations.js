@@ -18,7 +18,7 @@ router.get('/', async function (req, res, next) {
 
 
 router.get('/activities', async function (req, res, next) {
-    const response = await api.request(`v2/organizations/105297/activities?time_slot[start]=${$req.query.startTime}&time_slot[stop]=${req.query.endTime}`, {
+    const response = await api.request(`v2/organizations/105297/activities?time_slot[start]=${req.query.startTime}&time_slot[stop]=${req.query.endTime}`, {
         method: 'GET',
         json: true
       });
