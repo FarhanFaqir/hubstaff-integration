@@ -37,8 +37,9 @@ router.get('/activities', async function (req, res) {
     let internalTeamData = JSON.parse(response1.body);
     const externalTeamData = JSON.parse(response2.body);
     internalTeamData.activities = internalTeamData.activities.concat(externalTeamData.activities);
-
-    const updatedActivities = internalTeamData.activities.map(activity => {
+ 
+    let updatedActivities = {};
+    updatedActivities.activities = internalTeamData.activities.map(activity => {
         const userToMemberId = {
             329418: 8,
             1980844: 7,
