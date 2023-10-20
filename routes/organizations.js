@@ -48,13 +48,13 @@ router.get('/activities', async function (req, res) {
         };
       
         const memberId = userToMemberId[activity.user_id] || null;
+        const trackedHours = activity.tracked / 3600;
         return {
           ...activity,
           member_id: memberId,
+          trackedHours: trackedHours,
         };
       });
-
-   
     res.send(updatedActivities)
 });
 
