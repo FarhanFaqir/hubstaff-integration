@@ -17,25 +17,26 @@ router.get('/', async function (req, res, next) {
 });
 
 function groupByUserId(data) {
-  const groupedData = {};
+  const groupedData = [];
   for (const record of data) {
-    // console.log(record);
     const userId = record.user_id;
-    if (!groupedData[userId]) {
-      groupedData[userId] = {
-        tracked_hours: 0,
-        tracked: 0,
-        member_id: record.member_id,
-        user_id: record.user_id
-      };
+    const existingRecord = groupedData.find((record) => record.user_id === userId);
+    if (existingRecord) {
+      existingRecord.tracked_hours += record.trackedHours;
+      existingRecord.tracked += record.tracked;
+    } else {
+      groupedData.push({
+        user_id: record.user_id,
+        tracked_hours: record.trackedHours,
+        tracked: record.tracked,
+        member_id: record.member_id
+      });
     }
-
-    groupedData[userId].tracked_hours += record.trackedHours;
-    groupedData[userId].tracked += record.tracked;
   }
 
   return groupedData;
 }
+
 
 
 router.get('/activities', async function (req, res) {
@@ -64,7 +65,18 @@ router.get('/activities', async function (req, res) {
       329418: 8,
       1980844: 7,
       1614143: 4,
-      2253498: 10
+      2253498: 10,
+      2273671: 9,
+      2273664: 12,
+      // 675659: junaid madeem
+      1803186: 15,
+      // 1494791: ramsha ali khan
+      2233674: 6,
+      2399723: 18,
+      1966374: 13,
+      1801812: 11,
+      1787148: 14,
+      1615909: 5
   };
     updatedActivities.activities = internalTeamData.activities.map(activity => {      
         const memberId = userToMemberId[activity.user_id] || null;
@@ -78,8 +90,6 @@ router.get('/activities', async function (req, res) {
 
     let groupedData = {};
     groupedData.activities = groupByUserId(updatedActivities.activities)
-
-    // console.log(groupedData);
 
     res.send(groupedData)
 });
