@@ -76,7 +76,8 @@ router.get('/activities', async function (req, res) {
         };
       });
 
-    const groupedData = groupByUserId(updatedActivities.activities);
+    let groupedData = {};
+    groupedData.activities = groupByUserId(updatedActivities.activities)
 
     // console.log(groupedData);
 
