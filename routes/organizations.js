@@ -16,6 +16,27 @@ router.get('/', async function (req, res, next) {
     });
 });
 
+function groupByUserId(data) {
+  const groupedData = {};
+  for (const record of data) {
+    // console.log(record);
+    const userId = record.user_id;
+    if (!groupedData[userId]) {
+      groupedData[userId] = {
+        tracked_hours: 0,
+        tracked: 0,
+        member_id: record.member_id,
+        user_id: record.user_id
+      };
+    }
+
+    groupedData[userId].tracked_hours += record.trackedHours;
+    groupedData[userId].tracked += record.tracked;
+  }
+
+  return groupedData;
+}
+
 
 router.get('/activities', async function (req, res) {
 
@@ -39,14 +60,13 @@ router.get('/activities', async function (req, res) {
     internalTeamData.activities = internalTeamData.activities.concat(externalTeamData.activities);
  
     let updatedActivities = {};
-    updatedActivities.activities = internalTeamData.activities.map(activity => {
-        const userToMemberId = {
-            329418: 8,
-            1980844: 7,
-            1614143: 4,
-            2253498: 10
-        };
-      
+    const userToMemberId = {
+      329418: 8,
+      1980844: 7,
+      1614143: 4,
+      2253498: 10
+  };
+    updatedActivities.activities = internalTeamData.activities.map(activity => {      
         const memberId = userToMemberId[activity.user_id] || null;
         const trackedHours = activity.tracked / 3600;
         return {
@@ -55,7 +75,12 @@ router.get('/activities', async function (req, res) {
           trackedHours: trackedHours,
         };
       });
-    res.send(updatedActivities)
+
+    const groupedData = groupByUserId(updatedActivities.activities);
+
+    // console.log(groupedData);
+
+    res.send(groupedData)
 });
 
 router.get('/timesheets', async function (req, res, next) {
